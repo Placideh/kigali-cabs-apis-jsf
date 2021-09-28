@@ -1,0 +1,323 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  font-family:Arial,Helvetica,san-serif;
+  margin:0;
+  background-color:#f4f4f4;
+}
+#main-header {
+  background-color: #000;
+  color:#fff;
+  position: fixed;
+  display:flex;
+  top:-0.5em;
+  width:100%;
+  z-index:1;
+  box-sizing:border-box;
+}
+.error {
+    color:red;
+    font-style: italic;
+    font-family: cursive;
+    left:23em;
+}
+.logo {
+  height:50px;
+  border-radius:10%;
+  position:relative;
+  top:1em;
+}
+.logoHeading {
+  font-size:25px;
+}
+a{
+  color:yellow;
+  text-decoration:none;
+  padding:0.5em;
+  border-radius:5px;
+}
+a:hover{
+  color:blue;
+  background:#fff;
+  border:1px solid #ccc;
+}
+.headingTypography {
+  position:relative;
+  left:7rem;
+  font-size:27px;
+  /* color:yellow; */
+}
+.ul-list {
+  display:flex;
+  justify-content:space-between;
+  list-style:none;
+  position:relative;
+  left:25em;
+  top:1.3em;
+}
+.ul-list >li {
+  margin-right:7em;
+}
+
+.btnHeader {
+  position:relative;
+  left:20em;
+  height:6vh;
+  margin-right:2em;
+  width:17em;
+  top:1.5em;
+  border-radius:5px;
+}
+.showcase {
+  margin-top:4.5em;
+  background-image:url(../../images/park.jpg);
+  height:30em;
+  width:100%;
+  background-position:center center;
+  text-align:center;
+  color:#f4f4f4;
+  box-sizing:border-box;
+  position:relative;
+}
+.showcase >h1 {
+  position:relative;
+  top:2em;
+}
+.showcase >p {
+  position:relative;
+  top:8em;
+  /* font-size:215%; */
+  font-size:135%;
+}
+.btnShowcase {
+  position:absolute;
+  height:6vh;
+  width:15em;
+  background:#ccc;
+  border-radius:5px;
+  font-weight:bold;
+  margin-top:15%;
+  left:45%;
+}
+
+.container {
+  width:80%;
+  margin:auto;
+  margin-bottom:5%;
+  text-align: center;
+  height:30em;
+}
+
+.parkCar {
+  display: grid;
+  grid-template-rows: repeat(4,1fr);
+  grid-gap: 3em;
+  position: relative;
+
+}
+.password{
+    width: 54em;
+    height: 4em;
+    position: relative;
+    left:8em;
+    border:2px solid #000;
+    border-radius:5px;
+}
+.parkIt{
+    position:relative;
+    top:10em;
+}
+.btnSubmit2 {
+    position: absolute;
+    top:5em;
+    left:54em;
+    height: 25px;
+}
+input[type="text"] {
+  height: 4em;
+  width: 50%;
+  box-sizing: border-box;
+  position: relative;
+  left:6em;
+  border-radius: 5px;
+}
+.selection {
+  height: 4em;
+  width: 50%;
+  box-sizing: border-box;
+  position: relative;
+  left:8em;
+  border-radius: 5px;
+}
+.detailTag {
+  position: absolute;
+  top:18em;
+  text-align: center;
+  left:3em;
+}
+.btnSubmit {
+  height: 3em;
+  width: 50px;
+  position: relative;
+  left:38.5%;
+}
+#main-footer {
+background:#000;
+height:15em;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+color:#fff;
+position:relative;
+top:14em;
+}
+#main-footer > h4 {
+  position:absolute;
+  top:2em;
+}
+#main-footer > p {
+  position:absolute;
+  top:10em;
+  left:40em;
+}
+.footerdiv {
+  position:absolute;
+  top:0px;
+  right:3em;
+}
+@media (max-width:960px) {
+  *{
+    box-sizing: border-box;
+  }
+  #main-header {
+    background-color: #000;
+    color:#fff;
+    position: fixed;
+    display:flex;
+    top:0.06em;
+    width:100%;
+    z-index:1;
+    box-sizing:border-box;
+    overflow: hidden;
+  }
+  .logo {
+    height:30px;
+    border-radius:10%;
+    position:relative;
+    top:1em;
+  }
+  .logoHeading {
+    font-size:20px;
+  }
+  a{
+    color:yellow;
+    text-decoration:none;
+    padding:0.2em;
+    border-radius:5px;
+  }
+  a:hover{
+    color:blue;
+    background:#fff;
+    border:1px solid #ccc;
+  }
+  .headingTypography {
+    position:relative;
+    left:2rem;
+    font-size:12px;
+
+  }
+  .ul-list {
+    display:flex;
+    justify-content:space-between;
+    list-style:none;
+    position:relative;
+    left:0.1em;
+    top:0.3em;
+  }
+  .ul-list >li {
+    margin-right:1em;
+  }
+  .detailTag {
+    position: absolute;
+    top:16em;
+  }
+  .btnHeader {
+    position:relative;
+    left:0.1em;
+    height:5vh;
+    margin-right:0.2em;
+    width:7em;
+    top:1em;
+    border-radius:5px;
+  }
+  .btnHeader:hover{
+    background: #ccc;
+    color:blue;
+  }
+  .showcase {
+    margin-top:3.3em;
+    background-image:url(../images/park.jpg);
+    height:25em;
+    width:100%;
+    background-position:center center;
+    text-align:center;
+    color:#f4f4f4;
+    box-sizing:border-box;
+    position:relative;
+  }
+  .showcase >h1 {
+    position:relative;
+    top:2em;
+  }
+  .showcase >p {
+    position:relative;
+    top:6.5em;
+    font-size:110%;
+  }
+  .btnShowcase {
+    position:absolute;
+    height:6vh;
+    width:15em;
+    background:#ccc;
+    border-radius:5px;
+    font-weight:bold;
+    margin-top:25%;
+    left:35%;
+  }
+  .shortShowcase {
+    text-align:center;
+    position:relative;
+  }
+  .shortShowcase > h2 {
+    position: relative;
+    top:-6em;
+  }
+  .shortShowcase >p {
+    position:relative;
+    width:105%;
+    left:1em;
+    top:-8em;
+  }
+  #main-footer {
+  background:#000;
+  height:15em;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  color:#fff;
+  position:relative;
+  }
+  #main-footer > h4 {
+    position:absolute;
+    top:-0.5em;
+  }
+  #main-footer > p {
+    position:absolute;
+    top:10em;
+    left:15em;
+  }
+  .footerdiv {
+    position:absolute;
+    top:0px;
+    right:3em;
+  }
+}

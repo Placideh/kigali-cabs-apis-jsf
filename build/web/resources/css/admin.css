@@ -1,0 +1,270 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  font-family:Arial,Helvetica,san-serif;
+  margin:0;
+  background-color:#f4f4f4;
+}
+#main-header {
+  background-color: #000;
+  color:#fff;
+  position: fixed;
+  display:flex;
+  top:-0.5em;
+  width:100%;
+  z-index:1;
+  box-sizing:border-box;
+}
+.logo {
+  height:50px;
+  border-radius:10%;
+  position:relative;
+  top:1em;
+}
+.logoHeading {
+  font-size:25px;
+}
+a{
+  color:yellow;
+  text-decoration:none;
+  padding:0.5em;
+  border-radius:5px;
+}
+a:hover{
+  color:blue;
+  background:#fff;
+  border:1px solid #ccc;
+}
+.headingTypography {
+  position:relative;
+  left:7rem;
+  font-size:27px;
+  /* color:yellow; */
+}
+.ul-list {
+  display:flex;
+  justify-content:space-between;
+  list-style:none;
+  position:relative;
+  left:25em;
+  top:1.3em;
+}
+.adminTag {
+  background: black;
+  width:4em;
+  color:#fff;
+}
+.editBtn{
+    background-color:aqua;
+    border-radius: 2px;
+    padding:5px;
+    margin-right:10px;
+    width: 5em;
+    
+}
+.editBtn:hover{
+    background-color:blue;
+    color:#fff;
+    cursor: pointer;
+    border-radius: 2px;
+    padding:5px;
+    margin-right:10px;
+    width: 5em;
+}
+.payBtn{
+    background-color:green;
+    color:#fff;
+    border-radius: 2px;
+    padding:5px;
+    margin-right:10px;
+    width: 5em;
+    
+}
+.payBtn:hover{
+     background-color:#fff;
+    color:green;
+    cursor:pointer;
+    border-radius: 2px;
+    padding:5px;
+    margin-right:10px;
+    font-weight: bold;
+    width: 5em;
+}
+.deleteBtn{
+    background-color: red;
+    color:#fff;
+    border-radius: 2px;
+    padding:5px;
+    margin-left: 3em;
+    margin-top: 2px;	
+    width: 5em;
+}
+.deleteBtn:hover{
+    background-color:black;
+    color:red;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor:pointer;
+}
+.ul-list >li {
+  margin-right:8em;
+}
+
+.container {
+    position: relative;
+    top:8em;
+    margin-bottom: 5em;
+}
+
+
+.input-tag {
+  height: 3em;
+  width: 50%;
+  box-sizing: border-box;
+  position: relative;
+  left:3em;
+  border-radius: 5px;
+}
+.rowHead {
+			background-color: #000;
+			display: grid;
+			color:#fff;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+			grid-gap:2rem;
+			height: 50px;
+			align-items: center;
+		}
+#row-data >tr{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap:1rem;
+	align-items: center;
+
+}
+#row-data >tr:nth-child(even){
+	background-color: #ccc;
+
+}
+#row-data >tr:nth-child(odd){
+	background-color: #f4f4f4;
+
+}
+.btnTable1 {
+  display: inline;
+  background-color:blue;
+  color:#fff;
+}
+
+.btnTable2 {
+  display: inline;
+  background-color:red;
+  color:#fff;
+}
+.detailTag {
+  position: absolute;
+  top:18em;
+  text-align: center;
+  left:3em;
+}
+#main-footer {
+background:#000;
+height:15em;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+color:#fff;
+position:relative;
+top:18em;
+}
+#main-footer > h4 {
+  position:absolute;
+  top:2em;
+}
+#main-footer > p {
+  position:absolute;
+  top:10em;
+  left:45em;
+}
+.footerdiv {
+  position:absolute;
+  top:0px;
+  right:3em;
+}
+@media (max-width:960px) {
+  *{
+    box-sizing: border-box;
+  }
+  #main-header {
+    background-color: #000;
+    color:#fff;
+    position: fixed;
+    display:flex;
+    top:0.06em;
+    width:100%;
+    z-index:1;
+    box-sizing:border-box;
+    overflow: hidden;
+  }
+  .logo {
+    height:30px;
+    border-radius:10%;
+    position:relative;
+    top:1em;
+  }
+  .logoHeading {
+    font-size:20px;
+  }
+  a{
+    color:yellow;
+    text-decoration:none;
+    padding:0.2em;
+    border-radius:5px;
+  }
+  a:hover{
+    color:blue;
+    background:#fff;
+    border:1px solid #ccc;
+  }
+  .headingTypography {
+    position:relative;
+    left:2rem;
+    font-size:12px;
+
+  }
+  .detailTag {
+    position: absolute;
+    top:16em;
+  }
+  .ul-list {
+    display:flex;
+    justify-content:space-between;
+    list-style:none;
+    position:relative;
+    left:0.1em;
+    top:0.3em;
+  }
+  .ul-list >li {
+    margin-right:1em;
+  }
+
+  .btnHeader {
+    position:relative;
+    left:0.1em;
+    height:5vh;
+    margin-right:0.2em;
+    width:7em;
+    top:1em;
+    border-radius:5px;
+  }
+  .btnHeader:hover{
+    background: #ccc;
+    color:blue;
+  }
+
+  #main-footer > p {
+    position:absolute;
+    top:10em;
+    left:15em;
+  }
+}
+

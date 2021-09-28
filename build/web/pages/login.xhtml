@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Login Page</title>
+	<h:outputStylesheet library="css" name="index.css" />
+    </h:head>
+    <h:body>
+	<header id="main-header">
+            <h:graphicImage value="/images/logo2.png" class="logo"/>
+            <h3 class="logoHeading">KPC</h3>
+            <h3 class="headingTypography">Kigali Parking Cabs</h3>
+            <div class="my-list">
+		<h:form>
+		    <ul class="ul-list">
+			<li><h:commandLink action="#{userBB.home()}" value="Home"/></li>
+			<li><h:commandLink action="#{userBB.about()}" value="About" /></li>
+			<li><h:commandLink value="LogOut"/></li>
+		    </ul>
+		</h:form>
+            </div>
+        </header>
+        <div class="showcase">
+            <h1>Park Well And Park Safety </h1>
+            <p>Your Property Is Safe and reliable With Us that's our ambition over a hundreds people
+                we cooperate we treat you as One cause your Vehicle it is the most precious thing
+                that we value we ensure that it is well protected and you feel Welcomed always  </p>
+	   
+        </div>
+	
+	<div class="container">
+            <h2 class="heading">Login</h2>
+            <h:form class="parkCar"  >
+		
+                <div>
+                    <h:outputLabel for="username" value="User Name" />
+                    <h:inputText id="username"  
+				 value="#{userBB.user.username}"
+				 required="true"
+				 requiredMessage="ownerName must be filled"
+                                 a:placeholder="jumpMan"
+				 validatorMessage="owner name  contains invalid characters"
+                                 >
+			<f:validateRegex pattern="[A-Za-z0-9]+" />
+                    </h:inputText>
+		    <br />
+		    <h:message for="username" class="error" />
+                </div>
+		<div>
+		    <h:outputLabel for="password" value="Password" />
+                    <h:inputSecret id="password"  
+				   value="#{userBB.user.password}"
+				   required="true"
+				   requiredMessage="password must be filled"
+				   a:placeholder="***Burn3rb0!***"
+				   validatorMessage="password contains invalid characters"
+				   >
+			<f:validateRegex pattern="[A-Za-z0-9]+" />
+                    </h:inputSecret>
+		    <br />
+		    <h:message for="password" class="error" />
+                </div>
+               
+                <h:commandButton class="btn" action="#{userBB.login()}" type="submit" value="LogIn" />
+
+            </h:form>
+	    <h:form>
+		<h:commandButton class="signUP"  value="SignUp" type="submit" action="#{userBB.signUp()}"  />
+		
+	    </h:form>
+        </div>
+    </h:body>
+</html>
+

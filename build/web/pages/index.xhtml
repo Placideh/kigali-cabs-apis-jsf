@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>User Register</title>
+      
+        <h:outputStylesheet library="css" name="index.css" />
+       
+    </h:head>
+    <h:body>
+        <header id="main-header">
+            <h:graphicImage value="/images/logo2.png" class="logo"/>
+            <h3 class="logoHeading">KPC</h3>
+            <h3 class="headingTypography">Kigali Parking Cabs</h3>
+            <div class="my-list">
+             <h:form>
+                <ul class="ul-list">
+                    <li><h:commandLink value="Home"/></li>
+                    <li><h:commandLink value="About" /></li>
+                </ul>
+            </h:form>
+            </div>
+        </header>
+        <div class="showcase">
+            <h1>Park Well And Park Safety </h1>
+            <p>Your Property Is Safe and reliable With Us that's our ambition over a hundreds people
+                we cooperate we treat you as One cause your Vehicle it is the most precious thing
+                that we value we ensure that it is well protected and you feel Welcomed always  </p>
+        </div>
+        <div class="my-form">
+            <h:form id="myForm" prependId="false">
+                <div>
+                    <h:outputLabel for="username" value="UserName"/>
+                    <h:inputText id="username"  value="#{userBB.user.username}" 
+			required="true"
+			requiredMessage="username must be filled"
+                         a:placeholder="Placide hakiz"
+			 validatorMessage="username  contains invalid characters"
+                        >
+			<f:validateRegex pattern="[A-Za-z]+" />
+                    </h:inputText>
+		    <br />
+			<h:message for="username" class="error" />
+                </div>
+                 <div>
+		     <h:outputLabel for="email" value="Email" />
+                    <h:inputText id="email"  value="#{userBB.user.email}"
+			required="true"
+			requiredMessage="email must be filled"
+                         a:placeholder="placideh@gmail.com"
+			 validatorMessage="email contains invalid characters"
+                        >
+			<f:validateRegex pattern="[a-z0-9+_.-@]+" />
+                    </h:inputText>
+		     <br />
+			<h:message for="email" class="error" />
+                </div>
+                  <div>
+		      <h:outputLabel for="password" value="Password" />
+                    <h:inputSecret id="password"  
+		        value="#{userBB.user.password}"
+			required="true"
+			requiredMessage="password must be filled"
+                         a:placeholder="***Burn3rb0!***"
+			 validatorMessage="password contains invalid characters"
+                        >
+			<f:validateRegex pattern="[A-Za-z0-9]+" />
+                    </h:inputSecret>
+		      <br />
+			<h:message for="password" class="error" />
+                </div>
+                
+                  <div>
+                    <h:outputLabel for="cpassword" value="Confirm Password" />
+                    <h:inputSecret id="cpassword"  
+				   value="#{userBB.user.cpassword}" 
+			required="true"
+			requiredMessage="password must be filled"
+                         a:placeholder="***Burn3rb0!***"
+			 validatorMessage="password contains invalid characters"
+                        >
+			<f:validateRegex pattern="[A-Za-z0-9]+" />
+                    </h:inputSecret>
+		    <br />
+			<h:message for="cpassword" class="error" />
+                </div>
+                    
+                <h:commandButton class="btn" type="submit" value="Register" action="#{userBB.registerUser()}" />
+            </h:form> 
+        </div>
+        <div class="container">
+            <div class="shortShowcase">
+
+                <h2>Your Vehicle,Our Priority</h2>
+                <p>Kigali Parking Cabs is an open community for everyone that  love safety of
+                    Their Vehicles. We help you making sure that your will become true and remove
+                    any doubt that your vehicle is not under well secured. </p>
+            </div>
+            <div class="boxes">
+
+
+                <div class="box1">
+                    <h:graphicImage value="/images/pexels.jpeg" width="100%" />
+                    <p>Get more information on how we
+                        are a big team that are certified
+                        and ambition driven and work collaboration
+                        with our customers
+                    </p>
+		    <h:form>
+                    <h:commandButton class="btn1" type="submit" value="Get In Touch" />
+			
+		    </h:form>
+                </div>
+                <div class="box2">
+                    <h:graphicImage value="/images/imag.jpg" width="100%" />
+                    <p>Help us to get more Feedback and rate Our
+                        services it will help a lot in our survey
+                        ,as we consider you as our first priority
+                        your ideas are the first ahead.
+                    </p>
+		    <h:form>
+                    <h:commandButton class="btn2" type="submit" value="Tell Us" />
+			
+		    </h:form>
+                    
+                </div>
+                <div class="box3">
+                    <h:graphicImage value="/images/images.jpg" width="100%" />
+                    <p>You want get the parking space . we are
+                        here for You just click this underneath Button</p>
+		    <h:form>
+                    <h:commandButton class="btn3" type="submit" value="Park Your cab" />
+			
+		    </h:form>
+                    
+                </div>
+            </div>
+        </div><!-- end of container -->
+        <div class="smallText">
+            <h2>For Businesses , By Customers</h2>
+            <p>Our mission is to help car owners having a good feel that
+                their properties are in good hands. This means helping them feel
+                comfortable wherever in different actions not worrying about their
+                vehicle rather being in place they are 100%</p>
+            <div class="smbox">
+
+                <div class="smbox1">
+                    <p>We are professionals and mostly we love what we do
+                        , This has made us the most popular reliable services
+                        here in Kigali</p>
+                </div>
+                <div class="smbox2">
+                    <p>
+                        Looking to get all of our stations
+			<h:form>
+                        <h:commandLink value="check now " />
+			    
+			</h:form>
+                    </p>
+                </div>
+                <div class="smbox3">
+                    <p>
+                        KPC, we believe communication and collaboration builds
+                        a family so we treat whoever approaches us for the services
+                        as long partener for the long run.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <section class="main container ">
+            <h3>A better future and smart working that what brings more cooperation that
+                with a great vision for success</h3>
+
+        </section>
+        <footer id="main-footer">
+
+            <h4>Kigali Parking Cabs</h4>
+
+            <div class="footerdiv">
+                <h:form>
+                    
+                    <h5><h:commandLink value="Facebook"/></h5>
+                    <h5><h:commandLink value="Twitter"/></h5>
+                    <h5><h:commandLink value="Instagram" /></h5>
+                </h:form>
+            </div>
+            <p>copyright&copy;2021 kpc</p>
+        </footer>
+    </h:body>
+</html>
+

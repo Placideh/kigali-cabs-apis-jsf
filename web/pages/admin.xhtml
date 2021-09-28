@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>KPC Admin</title>
+        <h:outputStylesheet library="css" name="admin.css"/>
+    </h:head>
+    <h:body>
+         <header id="main-header">
+            <h:graphicImage value="/images/logo2.png" class="logo"/>
+            <h3 class="logoHeading">KPC</h3>
+            <h3 class="headingTypography">Kigali Parking Cabs</h3>
+            <div class="my-list">
+             <h:form>
+                <ul class="ul-list">
+                    <li><h:commandLink value="Home"/></li>
+                    <li><h:commandLink value="About" /></li>
+                    <li><h:commandLink value="LogOut"/></li>
+                </ul>
+            </h:form>
+            </div>
+        </header>
+        <div class="container">
+            <h2>Table View For All Operation In The System</h2>
+            <h:form class="myForm">
+                <h:outputLabel for="Search" value="Search"/>
+                <h:inputText class="input-tag" a:placeholder="Enter plate No" value="#{adminBB.searchByPlateno()}"/>
+            </h:form>
+	    
+            <h:dataTable id="tbl" var="car" value="#{adminBB.listAllCars()}" border="2" cellpadding="8" cellspacing="0"
+			 rowClasses="oddrow, evenrow" >
+                <h:column >
+                    <f:facet name="header">CarPlateNo &#9660;</f:facet>
+                    <h:outputText value="#{car.plateNo}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">UserName&#9660;</f:facet>
+                    <h:outputText value="#{car.user.username}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Email &#9660;</f:facet>
+                    <h:outputText value="#{car.user.email}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Password &#9660;</f:facet>
+                    <h:outputText value="#{car.user.password}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Booking Token &#9660;</f:facet>
+                    <h:outputText value="#{car.bookingId}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">status &#9660;</f:facet>
+                    <h:outputText value="#{car.status}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Location &#9660;</f:facet>
+                    <h:outputText value="#{car.location}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Booking Time &#9660;</f:facet>
+                    <h:outputText value="#{car.bookedTime}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Entry Time &#9660;</f:facet>
+                    <h:outputText value="#{car.startTime}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Exit Time &#9660;</f:facet>
+                    <h:outputText value="#{car.endTime}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Amount &#9660;</f:facet>
+                    <h:outputText value="#{car.payment}"/>
+                </h:column> 
+                <h:column >
+                    <f:facet name="header">Modification &#9660;</f:facet>
+		    <h:form>
+			<h:commandButton value="Edit" type="submit" class="editBtn" action="#{adminBB.updateCarOrUser()}" >
+			    <f:setPropertyActionListener 
+			    target = "#{adminBB.car}" value = "#{car}" />
+			</h:commandButton> 
+                    <h:commandButton value="Pay" type="submit"
+				     class="payBtn"
+				     action="#{adminBB.getPay()}" >
+			<f:setPropertyActionListener 
+			    target = "#{adminBB.car}" value = "#{car}" />
+		    </h:commandButton>
+				     
+				    
+                    <h:commandButton value="Delete" type="submit" class="deleteBtn" action="#{adminBB.removeCar()}" >
+		    <f:setPropertyActionListener 
+			    target = "#{adminBB.car}" value = "#{car}" />
+		    </h:commandButton>
+		    </h:form>
+                </h:column> 
+            </h:dataTable>
+        </div>
+          <footer id="main-footer">
+
+            <h4>Kigali Parking Cabs</h4>
+
+            <div class="footerdiv">
+                <h:form>
+                    <h5><h:commandLink value="Facebook"/></h5>
+                    <h5><h:commandLink value="Twitter"/></h5>
+                    <h5><h:commandLink value="Instagram" /></h5>
+                </h:form>
+            </div>
+            <p>copyright&copy;2021 kpc</p>
+        </footer>
+    </h:body>
+</html>
+

@@ -1,0 +1,774 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  font-family:Arial,Helvetica,san-serif;
+  margin:0;
+  background-color:#f4f4f4;
+}
+#main-header {
+  background-color: #000;
+  color:#fff;
+  position: fixed;
+  display:flex;
+  top:-0.5em;
+  width:100%;
+  z-index:1;
+  box-sizing:border-box;
+}
+.error {
+    color:red;
+    font-style: italic;
+    font-family: cursive;
+    position: relative;
+    left:23em;
+}
+.logo {
+  height:50px;
+  border-radius:10%;
+  position:relative;
+  top:1em;
+}
+.logoHeading {
+  font-size:25px;
+}
+a{
+  color:yellow;
+  text-decoration:none;
+  padding:0.5em;
+  border-radius:5px;
+}
+a:hover{
+  color:blue;
+  background:#fff;
+  border:1px solid #ccc;
+}
+.headingTypography {
+  position:relative;
+  left:7rem;
+  font-size:27px;
+  /* color:yellow; */
+}
+.ul-list {
+  display:flex;
+  justify-content:space-between;
+  list-style:none;
+  position:relative;
+  left:40em;
+  top:1.3em;
+}
+.ul-list >li {
+  margin-right:7em;
+}
+
+.btnHeader {
+  position:relative;
+  left:15em;
+  height:6vh;
+  margin-right:2em;
+  width:10em;
+  top:1.5em;
+  border-radius:5px;
+}
+.btnHeader:hover{
+  background: #ccc;
+  color:blue;
+}
+.showcase {
+  margin-top:3.5em;
+  background-image: url(../../images/park.jpg);
+  height:30em;
+  width:100%;
+  background-position:center center;
+  text-align:center;
+  color:#f4f4f4;
+  box-sizing:border-box;
+  position:relative;
+}
+.parkCar {
+  display: grid;
+  grid-template-rows: repeat(4,1fr);
+  grid-gap: 3em;
+  position: relative;
+  top:-13em;
+
+}
+.showcase >h1 {
+  position:relative;
+  top:2em;
+}
+.showcase >p {
+  position:relative;
+  top:8em;
+  /* font-size:215%; */
+  font-size:135%;
+}
+.btnShowcase {
+  position:absolute;
+  height:6vh;
+  width:15em;
+  background:#ccc;
+  border-radius:5px;
+  font-weight:bold;
+  margin-top:15%;
+  left:45%;
+}
+.container {
+  position:relative;
+  top:12em;
+  width:80%;
+  margin:auto;
+  margin-bottom:5%;
+}
+.shortShowcase {
+  text-align:center;
+  position:relative;
+}
+.shortShowcase >p {
+  position:relative;
+  width:55%;
+  left:15.5em;
+}
+.boxes {
+  display :grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-gap:1em;
+  line-height:1.5em;
+}
+.box1 {
+  border-radius:5px;
+ box-shadow:2px 4px 2px 4px grey ;
+ height:21em;
+ width:80%;
+ text-align:center;
+}
+.box1 >p {
+  position:relative;
+  line-height:1.3em;
+  margin-bottom:3px;
+}
+.btn1 {
+  position:relative;
+  background:#000;
+  border-radius:5px #f1f1f1;
+  color:#fff;
+  width:70%;
+  padding:0.3em;
+  left:3em;
+}
+.box2 {
+  border-radius:5px;
+ box-shadow:2px 4px 2px 4px grey ;
+ height:21em;
+ width:80%;
+ text-align:center;
+}
+.box2 >p {
+  position:relative;
+  line-height:1.3em;
+  margin-bottom:3px;
+}
+.btn2 {
+  position:relative;
+  background:blue;
+  border-radius:5px #f1f1f1;
+  color:#f4f4f4;
+  width:70%;
+  padding:0.3em;
+  left:3em;
+}
+
+.box3 {
+  border-radius:5px;
+ box-shadow:2px 4px 2px 4px grey ;
+ height:21em;
+ width:80%;
+ text-align:center;
+}
+.box3 >p {
+  position:relative;
+  line-height:1.3em;
+  margin-bottom:3px;
+}
+.btn3{
+  position:relative;
+  background:#000;
+  border-radius:5px #f1f1f1;
+  color:#fff;
+  width:70%;
+  top:1.5em;
+  padding:0.3em;
+  left:3em;
+}
+.smallText {
+  background:#ddd;
+  height:30em;
+  width:100%;
+  text-align:center;
+  position:relative;
+  margin-top:20em;
+}
+.smallText > h2 {
+  margin-top:30px;
+}
+.smallText > p {
+width:50%;
+position:relative;
+top:2em;
+left:25em;
+
+}
+
+.smbox {
+  position:relative;
+  top:5em;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-gap:1em;
+}
+.smbox1 {
+  border :1px solid #ccc;
+  height:10em;
+
+}
+.smbox1 > p {
+  text-align:center;
+  position:relative;
+  top:2em;
+}
+.smbox2 {
+  border :1px solid #ccc;
+  height:10em;
+}
+.smbox2 > p {
+  text-align:center;
+  position:relative;
+  top:2em;
+}
+.smbox3 {
+  border :1px solid #ccc;
+  height:10em;
+}
+.smbox3 > p {
+  text-align:center;
+  position:relative;
+  top:2em;
+}
+.detailTag {
+  position: absolute;
+  top:18em;
+  text-align: center;
+  left:3em;
+}
+.aTag {
+  display:block;
+  background:#ccc;
+  color:#000;
+  width:25%;
+  position:relative;
+  left:10em;
+  top: 2em;
+}
+.main {
+  height:20em;
+  text-align:center;
+  position:relative;
+  top:10em;
+}
+#main-footer {
+background:#000;
+height:15em;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+color:#fff;
+position:relative;
+/*top:20em;*/
+}
+#main-footer > h4 {
+  position:absolute;
+  top:2em;
+}
+#main-footer > p {
+  position:absolute;
+  top:10em;
+  left:40em;
+}
+.footerdiv {
+  position:absolute;
+  top:0px;
+  right:3em;
+}
+.my-form {
+    margin-top: 5em;
+  display: grid;
+  grid-template-rows: repeat(4,1fr);
+  grid-gap: 3em;
+  position: relative;
+  height:23em;
+
+}
+.heading {
+    position:relative;
+    left:22em;
+    position: relative;
+      top:-8em;
+}
+.btnClass {
+    display:flex;
+}
+.btn {
+    margin-top: 3em;
+    width:150px;
+}
+.signInbtn{
+    width:150px;
+    position:relative;
+    left:58em;
+    top:-6.5em;
+}
+.signUP{
+     width:150px;
+    position:relative;
+    left:58em;
+    top:-30em;
+}
+label {
+  box-sizing: border-box;
+  position: relative;
+  left:18em;
+}
+input {
+  height: 3em;
+  width: 50%;
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  left:20em;
+  border-radius: 5px;
+}
+.btnSubmit {
+  height: 3em;
+  width: 30%;
+  position: relative;
+  left:20%;
+  top:12px;
+}
+@media (max-width:960px) {
+  *{
+    box-sizing: border-box;
+  }
+  #main-header {
+    background-color: #000;
+    color:#fff;
+    position: fixed;
+    display:flex;
+    top:0.06em;
+    width:100%;
+    z-index:1;
+    box-sizing:border-box;
+    overflow: hidden;
+  }
+  .logo {
+    height:30px;
+    border-radius:10%;
+    position:relative;
+    top:1em;
+  }
+  .logoHeading {
+    font-size:20px;
+  }
+  a{
+    color:yellow;
+    text-decoration:none;
+    padding:0.2em;
+    border-radius:5px;
+  }
+  a:hover{
+    color:blue;
+    background:#fff;
+    border:1px solid #ccc;
+  }
+  .headingTypography {
+    position:relative;
+    left:2rem;
+    font-size:12px;
+
+  }
+  .ul-list {
+    display:flex;
+    justify-content:space-between;
+    list-style:none;
+    position:relative;
+    left:0.1em;
+    top:0.3em;
+  }
+  .ul-list >li {
+    margin-right:1em;
+  }
+
+  .btnHeader {
+    position:relative;
+    left:0.1em;
+    height:5vh;
+    margin-right:0.2em;
+    width:7em;
+    top:1em;
+    border-radius:5px;
+  }
+  .btnHeader:hover{
+    background: #ccc;
+    color:blue;
+  }
+  .detailTag {
+    position: absolute;
+    top:16em;
+  }
+  .showcase {
+    margin-top:3.3em;
+    background-image: url(../../images/park.jpg);
+    height:25em;
+    width:100%;
+    background-position:center center;
+    text-align:center;
+    color:#f4f4f4;
+    box-sizing:border-box;
+    position:relative;
+  }
+  .showcase >h1 {
+    position:relative;
+    top:2em;
+  }
+  .showcase >p {
+    position:relative;
+    top:6.5em;
+    font-size:110%;
+  }
+  .btnShowcase {
+    position:absolute;
+    height:6vh;
+    width:15em;
+    background:#ccc;
+    border-radius:5px;
+    font-weight:bold;
+    margin-top:25%;
+    left:35%;
+  }
+  .shortShowcase {
+    text-align:center;
+    position:relative;
+  }
+  .shortShowcase > h2 {
+    position: relative;
+    top:-6em;
+  }
+  .shortShowcase >p {
+    position:relative;
+    width:105%;
+    left:1em;
+    top:-8em;
+  }
+  .boxes {
+    display :grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-gap:3em;
+    line-height:1.2em;
+  }
+  .box1 {
+    border-radius:5px;
+   box-shadow:2px 4px 2px 4px grey ;
+   height:22em;
+   width:10em;
+   text-align:center;
+  }
+  .box1 >p {
+    position:relative;
+    line-height:1.3em;
+    margin-bottom:35px;
+  }
+  .box1 >button {
+    position:relative;
+    background:#000;
+    border-radius:5px #f1f1f1;
+    color:#fff;
+    width:70%;
+    padding:0.3em;
+
+  }
+  .box2 {
+    border-radius:5px;
+   box-shadow:2px 4px 2px 4px grey ;
+   height:22em;
+   width:10em;
+   text-align:center;
+  }
+  .box2 >p {
+    position:relative;
+    line-height:1.3em;
+    margin-bottom:15px;
+  }
+  .box2 >button {
+    position:relative;
+    background:blue;
+    border-radius:5px #f1f1f1;
+    color:#f4f4f4;
+    width:70%;
+    padding:0.3em;
+
+  }
+  .box3 {
+    border-radius:5px;
+   box-shadow:2px 4px 2px 4px grey ;
+   height:22em;
+   width:10em;
+   text-align:center;
+  }
+  .box3 >p {
+    position:relative;
+    line-height:1.3em;
+    margin-bottom:3.5em;
+  }
+  .box3 >button {
+    position:relative;
+    background:#000;
+    border-radius:5px #f1f1f1;
+    color:#fff;
+    width:70%;
+    top:1.5em;
+    padding:0.3em;
+
+  }
+  .smallText {
+    background:#ddd;
+    height:30em;
+    width:100%;
+    text-align:center;
+    position:relative;
+  }
+  .smallText > h2 {
+    position: absolute;
+    top:0.1em;
+    left:5em;
+  }
+  .smallText > p {
+  width:80%;
+  position:absolute;
+  top:7em;
+  left:5em;
+
+  }
+  .btnContainer {
+    width:30%;
+    height:20%;
+    border-radius: 5px;
+    display:inline-block;
+     color:#fff;
+     background: #000;
+     text-decoration: none;;
+     padding:1rem 2 rem;
+     border:1px #fff solid;
+     margin-top:40px;
+     font-size:20px;
+     animation-name:btn;
+     animation-duration: 3s;
+     animation-delay:3s;
+     animation-fill-mode: forwards;
+     transition-property: transform;
+     transition-duration: 1s;
+  }
+  .btnContainer:hover{
+      transform: rotateY(180deg);
+      background:#000;
+      color:#f4f3f3;
+      border-radius: 5px;
+
+  }
+  .smbox {
+    position:absolute;
+    top:17em;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-gap:1em;
+  }
+  .smbox1 {
+    border :1px solid #ccc;
+    height:10em;
+
+  }
+  .smbox1 > p {
+    text-align:center;
+    position:relative;
+    top:2em;
+  }
+  .smbox2 {
+    border :1px solid #ccc;
+    height:10em;
+  }
+  .smbox2 > p {
+    text-align:center;
+    position:relative;
+    top:2em;
+  }
+  .smbox3 {
+    border :1px solid #ccc;
+    height:10em;
+  }
+  .smbox3 > p {
+    text-align:center;
+    position:relative;
+    top:0.5em;
+  }
+  .aTag {
+    display:block;
+    background:#ccc;
+    color:#000;
+    width:45%;
+    position:relative;
+    left:3.5em;
+    top: 1em;
+  }
+  .main {
+    height:15em;
+    text-align:center;
+    position:relative;
+    top:2em;
+  }
+  #main-footer {
+  background:#000;
+  height:15em;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  color:#fff;
+  position:relative
+  }
+  #main-footer > h4 {
+    position:absolute;
+    top:-0.5em;
+  }
+  #main-footer > p {
+    position:absolute;
+    top:10em;
+    left:15em;
+  }
+  .footerdiv {
+    position:absolute;
+    top:0px;
+    right:3em;
+  }
+  .my-form {
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+    grid-gap: 3em;
+    position: relative;
+    left:-5em;
+  }
+  label {
+    box-sizing: border-box;
+    position: relative;
+    left:17em;
+  }
+  input {
+    height: 3em;
+    width: 50%;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    left:20em;
+    border-radius: 5px;
+  }
+  .btnSubmit {
+    height: 3em;
+    width: 30%;
+    position:absolute;
+    top:18em;
+    left:40%;
+  }
+}
+@media(max-width:600px) {
+  .boxes {
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: column;
+  }
+  .box1 {
+    border-radius:5px;
+   box-shadow:2px 4px 2px 4px grey ;
+   height:25em;
+   width:23em;
+   text-align:center;
+  }
+  .box2 {
+    border-radius:5px;
+   box-shadow:2px 4px 2px 4px grey ;
+   height:25em;
+   width:23em;
+   text-align:center;
+  }
+  .box3 {
+    border-radius:5px;
+   box-shadow:2px 4px 2px 4px grey ;
+   height:25em;
+   width:23em;
+   text-align:center;
+  }
+  .box3 >button {
+    position:relative;
+    background:#000;
+    border-radius:5px #f1f1f1;
+    color:#fff;
+    width:70%;
+    top:-1em;
+    padding:0.3em;
+
+  }
+  .my-form {
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+    grid-gap: 3em;
+    position: relative;
+    left:-8em;
+  }
+  .btnSubmit {
+    height: 3em;
+    width: 30%;
+    position:absolute;
+    top:18em;
+    left:56%;
+  }
+  #main-header {
+    background-color: #000;
+    color:#fff;
+    height: 5em;
+    position: fixed;
+    display:flex;
+    top:0.06em;
+    width:100%;
+    z-index:1;
+    box-sizing:border-box;
+  }
+  .btnHeader:hover{
+    background: #ccc;
+    color:blue;
+  }
+  .btnHeader {
+    position:relative;
+    left:-10em;
+    height:6vh;
+    margin-right:1em;
+    width:30em;
+    top:3em;
+    border-radius:5px;
+  }
+  .btnHeader:hover{
+    background: #ccc;
+    color:blue;
+  }
+  .btnShowcase {
+    position: relative;
+    top:3em;
+    left:3em;
+  }
+  .detailTag {
+    position: absolute;
+    top:16.5em;
+  }
+}

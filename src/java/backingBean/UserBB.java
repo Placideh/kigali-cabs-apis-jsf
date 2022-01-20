@@ -48,11 +48,11 @@ public class UserBB implements Serializable {
     public String registerUser(){
 	FacesContext faceContext=FacesContext.getCurrentInstance();
 	try{
-//	    if(isUserValid()){
+	    if(isUserValid()){
 		ClientBuilder.newClient()
 		.target("http://localhost:8080/kigalicabsapi/api/users/user")
 		.request().post(Entity.json(user));
-//	    }
+	    }
 	    
 		
 	    
@@ -65,12 +65,25 @@ public class UserBB implements Serializable {
     public String home(){
 	return "login";
     }
+    public String about(){
+	return "about";
+    }
     
     public String login(){
-	ClientBuilder.newClient()
-		.target("http://localhost:8080/kigalicabsapi/api/'" + user.getUsername() + "'/'" + user.getPassword() + "'")
-		.request().post(Entity.json(user));
+	User userlogin=new User();
+	
+	 userlogin=ClientBuilder.newClient()
+		.target("http://localhost:8080/kigalicabsapi/api/users/login/"+user.getUsername()+"/"+user.getPassword())
+		.request().get(User.class);
+	 System.out.println("userLogin:"+userlogin);
+	if(userlogin!=null){
 	return "register";
+	}else{
+	    FacesContext facesContext = FacesContext.getCurrentInstance();
+	    facesContext.addMessage("myForm" + ":general", new FacesMessage("Invalid Password or Username"));
+	    return"login";
+	    
+	}
     }
      public String signUp(){
 	
@@ -80,11 +93,13 @@ public class UserBB implements Serializable {
 	 Integer atSign=user.getEmail().indexOf("@");
 	Integer emailLength=user.getEmail().length();
 	String textAfterAtSign=user.getEmail().substring(atSign+1,emailLength);
+	System.out.println("After @"+textAfterAtSign);
 	Integer dotSign=textAfterAtSign.indexOf(".");
 	Integer total=atSign+dotSign;
 	Boolean result=(total-atSign)<2;
-	String textAfterDotSign=user.getEmail().substring(dotSign+1,emailLength);
-	Boolean afterDotSignCheck=textAfterDotSign.length()<2;
+	String textAfterDotSign=textAfterAtSign.substring(dotSign+1, textAfterAtSign.length());
+	System.out.println(textAfterDotSign);
+	Boolean afterDotSignCheck=textAfterDotSign.length()<=1;
 	Map<String,String> errors=new HashMap<>();
 	if(user.getUsername().trim().isEmpty()){
 	    errors.put("username", "username must be filled");

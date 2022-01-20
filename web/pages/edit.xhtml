@@ -9,6 +9,7 @@
         <h:outputStylesheet library="css" name="register.css"/>
     </h:head>
     <h:body>
+	
 	<header id="main-header">
             <h:graphicImage value="/images/logo2.png" class="logo"/>
             <h3 class="logoHeading">KPC</h3>
@@ -18,7 +19,9 @@
 		    <ul class="ul-list">
 			<li><h:commandLink value="Home"/></li>
 			<li><h:commandLink value="About" /></li>
-			<li><h:commandLink value="LogOut"/></li>
+			<li><h:commandLink value="LogOut" action="#{adminBB.setNoCache()}">
+				
+			    </h:commandLink> </li>
 		    </ul>
 		</h:form>
             </div>
@@ -36,26 +39,27 @@
                 <div>
                     <h:outputLabel for="userName" value="UserName" />
                     <h:inputText id="userName"  
-				 value="#{editBB.car.user.username}"
+				 value="${editBB.username}"
 				 required="true"
-				 requiredMessage="ownerName must be filled"
+				 requiredMessage="UserName must be filled"
                                  a:placeholder="Placide Hakiz"
 				 validatorMessage="owner name  contains invalid characters"
                                  >
 			<f:validateRegex pattern="[A-Za-z]+" />
                     </h:inputText>
 		    <br />
-		    <h:message for="ownerName" class="error" />
+		    <h:message for="userName" class="error" />
                 </div>
                 <div>
 		    <h:outputLabel for="email" value="Email" />
-                    <h:inputText id="email"  value="#{editBB.car.user.email}"
+                    <h:inputText id="email"  value="${editBB.email}"
 				 required="true"
 				 requiredMessage="email must be filled"
 				 a:placeholder="placideh@gmail.com"
 				 validatorMessage="email contains invalid characters"
 				 >
-			<f:validateRegex pattern="[a-z0-9+_.-@]+" />
+			<!--<f:validateRegex pattern="[a-z0-9+_.-@]+" />-->
+			<f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
                     </h:inputText>
 		    <br />
 		    <h:message for="email" class="error" />
@@ -63,7 +67,7 @@
                 <div>
 		    <h:outputLabel for="password" value="Password" />
                     <h:inputSecret id="password"  
-				   value="#{editBB.car.user.password}"
+				   value="${editBB.password}"
 				   required="true"
 				   requiredMessage="password must be filled"
 				   a:placeholder="***Burn3rb0!***"
@@ -78,8 +82,10 @@
 		<h:inputHidden value="#{editBB.car.plateNo}"/>
 		
                 <h:commandButton class="btnSubmit" style="color:#000;width:40em; " action="#{editBB.editInfo()}" type="submit" value="Edit" />
-                <h:commandButton class="btnSubmit" style="color:#000;width:40em; " action="#{editBB.cancelEdit()}" type="submit" value="Cancel Edit" />
             </h:form>
+	    <h:form>
+                <h:commandButton class="btnSubit" style="color:#000;width:40em; " action="#{editBB.cancelEdit()}" type="submit" value="Cancel Edit" />
+	    </h:form>
         </div>
 	<footer id="main-footer">
 

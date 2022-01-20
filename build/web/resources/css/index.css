@@ -23,11 +23,23 @@ body{
     position: relative;
     left:23em;
 }
+.error2 {
+    color:red;
+    font-style: italic;
+    font-family: cursive;
+    position: relative;
+    left:40em;
+    top:-24em;
+}
 .logo {
   height:50px;
   border-radius:10%;
   position:relative;
   top:1em;
+}
+h2{
+    position: relative;
+    left:25em;
 }
 .logoHeading {
   font-size:25px;

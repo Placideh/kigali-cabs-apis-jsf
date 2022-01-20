@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -28,6 +29,7 @@ public class CarBB implements Serializable {
     private String bookingId;
     private Booking booking;
     private String parkIt;
+    private UIComponent myForm;
     
     public CarBB() {
 	car=new Car();
@@ -77,14 +79,25 @@ public class CarBB implements Serializable {
     
     
     
-    
+     public UIComponent getMyForm() {
+	return myForm;
+    }
+
+    public void setMyForm(UIComponent myForm) {
+	this.myForm = myForm;
+    }
     public String registerBooking(){
-	 bookingId=randomString();
-	booking.setBookId(bookingId);
-	booking.setBookingTime(new Date());
+	 Booking bookings=new Booking();
+	bookingId=randomString();
+	 
+	bookings.setBookId(bookingId);
+	bookings.setBookingTime(new Date());
+	bookings.setPlateNo(booking.getPlateNo());
+	bookings.setCarOwner(booking.getCarOwner());
+	bookings.setLocation(booking.getLocation());
 	ClientBuilder.newClient()
 		.target("http://localhost:8080/kigalicabsapi/api/booking")
-		.request().post(Entity.json(booking));
+		.request().post(Entity.json(bookings));
 	return "register";
     }
     private static String randomString() {
@@ -94,7 +107,7 @@ public class CarBB implements Serializable {
 	char[] mynewCharacters = characters.toCharArray();
 	Integer generatedCodeLength = 10;
 	for (int i = 0; i < generatedCodeLength; i++) {
-	    int index = (int) (Math.random() * 60);
+	    int index = (int) (Math.random() * 61);
 	    String newString = characters.substring(index, characters.length() - 1);
 	    str += mynewCharacters[newString.length()];
 	}
@@ -103,17 +116,7 @@ public class CarBB implements Serializable {
     public String getAdminView(){
 	FacesContext faceContext = FacesContext.getCurrentInstance();
 	try {
-//	    if (!"apiforUserFirstNameAndLastName".isEmpty()) {
-//		//it is not that empty we are sure that it exist then we proceed
-//		//then we get his his names 
-////		if(!"apiFindByPlateNo".isEmpty()){
-////here if the plateNo status is packed in then we can't pack it again unless it's status changed
-////		    throw new IllegalArgumentException("The PlateNo status is parkedIn was taken!");
-////		}
-////		ClientBuilder.newClient().target("").request().post(Entity.json(user));
-//	    }
 	    //getting booking details from bookingId returned to the view
-	    Booking booking=new Booking();
 	     booking=ClientBuilder.newClient()
 		.target("http://localhost:8080/kigalicabsapi/api/booking/"+parkIt)
 		.request().get(Booking.class);
@@ -123,7 +126,7 @@ public class CarBB implements Serializable {
 		 user=ClientBuilder.newClient()
 		    .target("http://localhost:8080/kigalicabsapi/api/users/"+booking.getCarOwner())
 		    .request().get(User.class);
-		 System.out.println(user);
+		 System.out.println("getting a user:"+user);
 		 if(user!=null){
 		     Double payment=200.0;
 		     //setting car properties and persist to the Database via Api
@@ -131,8 +134,8 @@ public class CarBB implements Serializable {
 		    car.setPlateNo(booking.getPlateNo());
 		    car.setLocation(booking.getLocation());
 		    car.setPayment(payment);
-		    car.setBookingId(booking.getBookId() );
-		    car.setBookedTime(booking.getBookingTime() );
+		    car.setBookingId(booking.getBookId());
+		    car.setBookedTime(booking.getBookingTime());
 		    car.setStartTime(new Date());
 		    car.setEndTime(new Date());
 		    car.setStatus("carParkedIn");
@@ -144,10 +147,12 @@ public class CarBB implements Serializable {
 		 }
 		 
 	     }
+	     FacesContext facesContext = FacesContext.getCurrentInstance();
+	    facesContext.addMessage("myForm"+":bookingId", new FacesMessage("Invalid Booking Token"));
 	     return "park";
 	     
 	} catch (Exception ex) {
-	    faceContext.addMessage("myForm", new FacesMessage(FacesMessage.SEVERITY_ERROR, "user not registered", ex.getMessage()));
+	    faceContext.addMessage("myForm:"+"bookingId", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid Booking Token", ex.getMessage()));
 	    return "index";
 	}
     }

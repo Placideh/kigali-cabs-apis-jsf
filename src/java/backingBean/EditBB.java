@@ -21,11 +21,14 @@ import model.User;
 @ManagedBean
 public class EditBB implements Serializable{
     Car car;
-    User user;
+//    User user;
+    private String username;
+    private String email;
+    private String password;
 
     public EditBB() {
 	car=new Car();
-	user=new User();
+//	user=new User();
     }
 
     public Car getCar() {
@@ -36,41 +39,62 @@ public class EditBB implements Serializable{
 	this.car = car;
     }
 
-    public User getUser() {
-	return user;
+    public String getUsername() {
+	return username;
     }
 
-    public void setUser(User user) {
-	this.user = user;
+    public void setUsername(String username) {
+	this.username = username;
     }
-    
-    
+
+    public String getEmail() {
+	return email;
+    }
+
+    public void setEmail(String email) {
+	this.email = email;
+    }
+
+    public String getPassword() {
+	return password;
+    }
+
+    public void setPassword(String password) {
+	this.password = password;
+    }
+
+   
+    public String edit(){
+	
+	return "edit";
+    }
+    public String getToAdmin(){
+	return "admin";
+    }
     
     public String editInfo(){
-
-	car=ClientBuilder.newClient()
-		.target("http://localhost:8080/kigalicabsapi/api/cars/edit/" + car.getPlateNo())
+	Car cars=new Car();
+	cars=ClientBuilder.newClient()
+		.target("http://localhost:8080/kigalicabsapi/api/cars/"+car.getPlateNo())
 		.request().get(Car.class);
 	
-	
+	System.out.println(cars);
+	User user2=new User();
 	//getting username from view and return whole user
-	User user=new User();
-	user = ClientBuilder.newClient()
-		.target("http://localhost:8080/kigalicabsapi/api/users/" + car.getUser().getUsername())
-		.request().get(User.class);
-	user.setUsername(car.getUser().getUsername());
-	user.setEmail(car.getUser().getEmail());
-	user.setPassword(car.getUser().getPassword());
-	user.setCpassword(car.getUser().getPassword());
-	car.setUser(user);
-	
+	user2.setUsername(username);
+	user2.setEmail(email);
+	user2.setPassword(password);
+	user2.setCpassword(password);
+	System.out.println("new user"+user2);
+	cars.setUser(user2);
+	System.out.println("new Car:"+cars);
 	ClientBuilder.newClient()
 		.target("http://localhost:8080/kigalicabsapi/api/users/user")
-		.request().put(Entity.json(user));
+		.request().put(Entity.json(user2));
 	
 	ClientBuilder.newClient()
 		.target("http://localhost:8080/kigalicabsapi/api/cars")
-		.request().put(Entity.json(car));
+		.request().put(Entity.json(cars));
 	
 	return "admin";
     }

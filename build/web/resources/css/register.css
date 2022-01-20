@@ -48,6 +48,13 @@ a:hover{
   font-size:27px;
   /* color:yellow; */
 }
+.error {
+    color:red;
+    font-style: italic;
+    font-family: cursive;
+    position: relative;
+    left:25em;
+}
 .ul-list {
   display:flex;
   justify-content:space-between;
@@ -108,7 +115,12 @@ a:hover{
   text-align: center;
   height:30em;
 }
-
+.btnSubit{
+   height: 3em;
+  width:50px;
+  position:relative;
+  left:7.5em;
+}
 .parkCar {
   display: grid;
   grid-template-rows: repeat(4,1fr);
@@ -134,6 +146,7 @@ a:hover{
     left:54em;
     height: 25px;
 }
+
 input[type="text"] {
   height: 4em;
   width: 50%;

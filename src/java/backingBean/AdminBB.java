@@ -7,9 +7,11 @@ package backingBean;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
@@ -24,9 +26,13 @@ public class AdminBB implements Serializable {
     Car car;
     private String plateNo;
     
-
+    List<Car>cars;
     public AdminBB() {
 	car=new Car();
+	cars=ClientBuilder.newClient()
+		.target("http://localhost:8080/kigalicabsapi/api/cars")
+		.request().get(new GenericType<List<Car>>(){});
+	
     }
 
     public Car getCar() {
@@ -35,6 +41,22 @@ public class AdminBB implements Serializable {
 
     public void setCar(Car car) {
 	this.car = car;
+    }
+
+    public String getPlateNo() {
+	return plateNo;
+    }
+
+    public void setPlateNo(String plateNo) {
+	this.plateNo = plateNo;
+    }
+
+    public List<Car> getCars() {
+	return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+	this.cars = cars;
     }
     
     
@@ -82,5 +104,20 @@ public class AdminBB implements Serializable {
 		.request().put(Entity.json(car));
        return "admin";
    }
+   public String search(){
+       plateNo = plateNo.toUpperCase();
+       if (plateNo.matches("[A-Z0-9]*")) {
+
+	   cars = cars.stream().filter(x -> {
+	       x = x;
+	       return x.getPlateNo().startsWith(plateNo);
+	   })
+		   .collect(Collectors.toList());
+
+       }
+       return null;
+   }
+   
+	
   
 }

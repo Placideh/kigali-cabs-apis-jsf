@@ -7,8 +7,14 @@
     <h:head>
         <title>KPC Admin</title>
         <h:outputStylesheet library="css" name="admin.css"/>
+	<h:form>
+	    
+	<h:commandLink rel="icon" type="image/png" hreflang="/images/favicon-32x32.png"/>
+	<h:commandLink rel="manifest" type="image/png" hreflang="/site.webmanifest"/>
+	</h:form>
     </h:head>
     <h:body>
+	<f:event type="preRenderView" listener="#{facesContext.externalContext.response.setHeader('Cache-Control', 'no-cache, no-store')}" />
          <header id="main-header">
             <h:graphicImage value="/images/logo2.png" class="logo"/>
             <h3 class="logoHeading">KPC</h3>
@@ -16,9 +22,10 @@
             <div class="my-list">
              <h:form>
                 <ul class="ul-list">
-                    <li><h:commandLink value="Home"/></li>
-                    <li><h:commandLink value="About" /></li>
-                    <li><h:commandLink value="LogOut"/></li>
+                    <li><h:commandLink value="Home" action="#{userBB.home()}"/></li>
+                    <li><h:commandLink value="About" action="#{userBB.about()}" /></li>
+                    <li><h:commandLink value="LogOut"  action="#{adminBB.setNoCache()}">
+		    </h:commandLink> </li>
                 </ul>
             </h:form>
             </div>
@@ -27,73 +34,79 @@
             <h2>Table View For All Operation In The System</h2>
             <h:form class="myForm">
                 <h:outputLabel for="Search" value="Search"/>
-                <h:inputText class="input-tag" a:placeholder="Enter plate No" value="#{adminBB.searchByPlateno()}"/>
+                <h:inputText class="input-tag" a:placeholder="Enter plate No" value="#{adminBB.plateNo}" id="plateNo">
+		    <f:ajax  event="keyup" listener="#{adminBB.search()}" render="tbl"/>
+		</h:inputText>
             </h:form>
 	    
-            <h:dataTable id="tbl" var="car" value="#{adminBB.listAllCars()}" border="2" cellpadding="8" cellspacing="0"
+            <h:dataTable id="tbl" var="car" value="#{adminBB.cars}" border="2" cellpadding="8" cellspacing="0"
 			 rowClasses="oddrow, evenrow" >
                 <h:column >
-                    <f:facet name="header">CarPlateNo &#9660;</f:facet>
+                    <f:facet name="header">CarPlateNo </f:facet>
                     <h:outputText value="#{car.plateNo}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">UserName&#9660;</f:facet>
+                    <f:facet name="header">UserName</f:facet>
                     <h:outputText value="#{car.user.username}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Email &#9660;</f:facet>
+                    <f:facet name="header">Email </f:facet>
                     <h:outputText value="#{car.user.email}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Password &#9660;</f:facet>
+                    <f:facet name="header">Password </f:facet>
                     <h:outputText value="#{car.user.password}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Booking Token &#9660;</f:facet>
+                    <f:facet name="header">Booking Token </f:facet>
                     <h:outputText value="#{car.bookingId}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">status &#9660;</f:facet>
+                    <f:facet name="header">status </f:facet>
                     <h:outputText value="#{car.status}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Location &#9660;</f:facet>
+                    <f:facet name="header">Location </f:facet>
                     <h:outputText value="#{car.location}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Booking Time &#9660;</f:facet>
+                    <f:facet name="header">Booking Time </f:facet>
                     <h:outputText value="#{car.bookedTime}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Entry Time &#9660;</f:facet>
+                    <f:facet name="header">Entry Time </f:facet>
                     <h:outputText value="#{car.startTime}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Exit Time &#9660;</f:facet>
+                    <f:facet name="header">Exit Time </f:facet>
                     <h:outputText value="#{car.endTime}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Amount &#9660;</f:facet>
+                    <f:facet name="header">Amount </f:facet>
                     <h:outputText value="#{car.payment}"/>
                 </h:column> 
                 <h:column >
-                    <f:facet name="header">Modification &#9660;</f:facet>
+                    <f:facet name="header">Modification </f:facet>
 		    <h:form>
-			<h:commandButton value="Edit" type="submit" class="editBtn" action="#{adminBB.updateCarOrUser()}" >
+			<h:commandButton value="Edit" type="submit" class="editBtn" action="#{editBB.edit()}" >
 			    <f:setPropertyActionListener 
-			    target = "#{adminBB.car}" value = "#{car}" />
+				target = "#{editBB.car}" value = "#{car}" />
 			</h:commandButton> 
                     <h:commandButton value="Pay" type="submit"
 				     class="payBtn"
 				     action="#{adminBB.getPay()}" >
 			<f:setPropertyActionListener 
 			    target = "#{adminBB.car}" value = "#{car}" />
+			<!--<f:ajax  render="tbl" />-->
 		    </h:commandButton>
 				     
 				    
-                    <h:commandButton value="Delete" type="submit" class="deleteBtn" action="#{adminBB.removeCar()}" >
+                    <h:commandButton value="Delete" type="submit" class="deleteBtn" action="#{adminBB.removeCar()}"
+				     onclick="return confirm('Are you sure?')"
+				     >
 		    <f:setPropertyActionListener 
 			    target = "#{adminBB.car}" value = "#{car}" />
+			    <!--<f:ajax  render="tbl" />-->
 		    </h:commandButton>
 		    </h:form>
                 </h:column> 

@@ -18,7 +18,7 @@
 		    <ul class="ul-list">
 			<li><h:commandLink action="#{userBB.home()}" value="Home"/></li>
 			<li><h:commandLink action="#{userBB.about()}" value="About" /></li>
-			<li><h:commandLink value="LogOut"/></li>
+			<li><h:commandLink value="LogOut" action="#{adminBB.setNoCache()}"/></li>
 		    </ul>
 		</h:form>
             </div>
@@ -33,16 +33,16 @@
 	
 	<div class="container">
             <h2 class="heading">Login</h2>
-            <h:form class="parkCar"  >
+            <h:form class="parkCar" id="myForm" >
 		
                 <div>
                     <h:outputLabel for="username" value="User Name" />
                     <h:inputText id="username"  
 				 value="#{userBB.user.username}"
 				 required="true"
-				 requiredMessage="ownerName must be filled"
+				 requiredMessage="username must be filled"
                                  a:placeholder="jumpMan"
-				 validatorMessage="owner name  contains invalid characters"
+				 validatorMessage="username contains invalid characters"
                                  >
 			<f:validateRegex pattern="[A-Za-z0-9]+" />
                     </h:inputText>
@@ -62,14 +62,19 @@
                     </h:inputSecret>
 		    <br />
 		    <h:message for="password" class="error" />
+		    
                 </div>
+		
                
                 <h:commandButton class="btn" action="#{userBB.login()}" type="submit" value="LogIn" />
 
+		<div>
+		<h:inputHidden id="general" />
+		<h:message for="general" class="error2" />    
+		</div>
             </h:form>
-	    <h:form>
+	    <h:form >
 		<h:commandButton class="signUP"  value="SignUp" type="submit" action="#{userBB.signUp()}"  />
-		
 	    </h:form>
         </div>
     </h:body>

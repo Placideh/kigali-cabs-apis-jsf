@@ -6,7 +6,6 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>User Register</title>
-      
         <h:outputStylesheet library="css" name="index.css" />
        
     </h:head>
@@ -18,8 +17,8 @@
             <div class="my-list">
              <h:form>
                 <ul class="ul-list">
-                    <li><h:commandLink value="Home"/></li>
-                    <li><h:commandLink value="About" /></li>
+                    <li><h:commandLink value="Home" action="#{userBB.home()}"/></li>
+                    <li><h:commandLink value="About" action="#{userBB.about()}" /></li>
                 </ul>
             </h:form>
             </div>
@@ -31,7 +30,8 @@
                 that we value we ensure that it is well protected and you feel Welcomed always  </p>
         </div>
         <div class="my-form">
-            <h:form id="myForm" prependId="false">
+		<h2>User Registration</h2>
+            <h:form id="myForm" >
                 <div>
                     <h:outputLabel for="username" value="UserName"/>
                     <h:inputText id="username"  value="#{userBB.user.username}" 
@@ -109,10 +109,7 @@
                         and ambition driven and work collaboration
                         with our customers
                     </p>
-		    <h:form>
-                    <h:commandButton class="btn1" type="submit" value="Get In Touch" />
-			
-		    </h:form>
+		   
                 </div>
                 <div class="box2">
                     <h:graphicImage value="/images/imag.jpg" width="100%" />
@@ -121,20 +118,14 @@
                         ,as we consider you as our first priority
                         your ideas are the first ahead.
                     </p>
-		    <h:form>
-                    <h:commandButton class="btn2" type="submit" value="Tell Us" />
-			
-		    </h:form>
+		   
                     
                 </div>
                 <div class="box3">
                     <h:graphicImage value="/images/images.jpg" width="100%" />
                     <p>You want get the parking space . we are
                         here for You just click this underneath Button</p>
-		    <h:form>
-                    <h:commandButton class="btn3" type="submit" value="Park Your cab" />
-			
-		    </h:form>
+		    
                     
                 </div>
             </div>
@@ -155,10 +146,7 @@
                 <div class="smbox2">
                     <p>
                         Looking to get all of our stations
-			<h:form>
-                        <h:commandLink value="check now " />
-			    
-			</h:form>
+			
                     </p>
                 </div>
                 <div class="smbox3">

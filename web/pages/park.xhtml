@@ -18,7 +18,7 @@
                 <ul class="ul-list">
                     <li><h:commandLink value="Home"/></li>
                     <li><h:commandLink value="About" /></li>
-                    <li><h:commandLink value="LogOut"/></li>
+                    <li><h:commandLink value="LogOut" /></li>
                 </ul>
             </h:form>
             </div>
@@ -28,11 +28,13 @@
             <p>Your Property Is Safe and reliable With Us that's our ambition over a hundreds people
                 we cooperate we treat you as One cause your Vehicle it is the most precious thing
                 that we value we ensure that it is well protected and you feel Welcomed always  </p>
-	    <h:form class="parkCar "  >
+	    <h:form class="parkCar " id="myForm" >
 		<div class="parkIt">
 		    <h:outputLabel for="bookingId" value="Booking Id Code" style="color:#fff;background: #000;font-weight:bold" />
 		    <h:inputText   id="bookingId" value="#{carBB.parkIt}" style="color:black;font-weight:bold"  /><br/>
                 <h:commandButton class="btnSubmit2" style="color:#000;width:40em; " action="#{carBB.getAdminView()}" type="submit" value="Park" />
+		<br/>
+		<h:message for="bookingId" class="error" />
 		</div>
             </h:form>
         </div>
